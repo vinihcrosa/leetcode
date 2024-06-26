@@ -7,23 +7,13 @@ class ListNode {
         this.next = (next===undefined ? null : next)
     }
 }
- 
 
-function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
-  let left = head;
-  let right = head;
-  let distance = 0;
-  if(head == null || left == null || right == null) return null;
-
-  while(right.next != null && left.next != null) {
-    right = right.next;
-    if(distance >= n) {
-      left = left.next;
-    } else distance ++
-  }
-  if(left == head && distance < n) return head.next;
-  left.next = left.next?.next ?? null;
-  return head
+function reverseList(head: ListNode | null): ListNode | null {
+  if(head == null || head.next == null) return head;
+  let newHead = reverseList(head.next);
+  head.next.next = head;
+  head.next = null;
+  return newHead;
 };
 
 function listTotArray(head: ListNode | null): number[] {
@@ -44,8 +34,7 @@ function arrayToList(arr: number[]): ListNode {
     next.next = new ListNode(arr[i]);
     next = next.next;
   }
-
   return head;
 }
 
-export { removeNthFromEnd, ListNode, listTotArray, arrayToList }
+export { reverseList, ListNode, listTotArray, arrayToList }
