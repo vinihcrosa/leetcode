@@ -2,6 +2,9 @@
   "name": "leetcode",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "create": "bun run create/index.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
